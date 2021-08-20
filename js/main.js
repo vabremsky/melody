@@ -1,6 +1,13 @@
 $(document).ready(function () {
   let currentFloor = 2;
   let floorPath = $(".home-image path");
+  let modal = $(".modal");
+  let modalCloseButton = $(".modal-close-button");
+  let showFlatsButton = $(".show-flats");
+
+  floorPath.on("click", toggleModal);
+  showFlatsButton.on("click", toggleModal);
+  modalCloseButton.on("click", toggleModal);
 
   // подсвечивание этажа при наведении мышки
   floorPath.on("mouseover", function () {
@@ -39,4 +46,8 @@ $(document).ready(function () {
     floorPath.removeClass("current-floor");
     $(`[data-floor=${usCurrentFloor}]`).toggleClass("current-floor");
   });
+
+  function toggleModal() {
+    modal.toggleClass("is-open");
+  }
 });
